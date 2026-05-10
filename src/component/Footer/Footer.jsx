@@ -6,7 +6,7 @@ import fbImage from '../../asset/facebook.png'
 import xImage from '../../asset/twitter.png'
 const Footer = () => {
     return (
-        <footer className=" bg-[#244D3F]">
+        <footer className=" bg-[#244D3F] mt-[80px]">
             <aside className='footer footer-horizontal footer-center  text-primary-content pt-10'>
                 <Image src={footerImage} width={'412px'} height={'60px'} alt='footerImage'></Image>
                 <p className="font-bold md:text-sm text-xs">

@@ -1,23 +1,30 @@
 import FriendCard from '@/component/FriendCard/FriendCard';
-import React, { use } from 'react';
+import React from 'react';
 import path from "path";
 import fs from "fs";
+import Link from 'next/link';
 
 const urlMaker = (fileName) => {
-  const filePath = path.join(process.cwd(), "public", fileName);
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const data = JSON.parse(fileContents);
-  return data;
+    const filePath = path.join(process.cwd(), "public", fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const data = JSON.parse(fileContents);
+    return data;
 };
+
 const Friend = () => {
-   const friends = urlMaker("data.json");
-    console.log(friends);
+    const friends = urlMaker("data.json");
+
     return (
-        <div>
-            {
-                friends.map(friend => <FriendCard key={friend.id} friend={friend}></FriendCard>)
-            }
-        </div>
+        <>
+            <h1 className='text-[24px] text-[#1F2937] font-semibold mb-4'>Your Friends</h1>
+            <div className='grid grid-cols-4 gap-4'>
+                {friends.map(friend => (
+                    <Link key={friend.id} href={`/friend/${friend.id}`}>
+                        <FriendCard friend={friend} />
+                    </Link>
+                ))}
+            </div>
+        </>
     );
 };
 
