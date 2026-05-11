@@ -4,7 +4,9 @@ import fs from "fs";
 import Image from 'next/image';
 import { MdDelete } from 'react-icons/md';
 import { RiNotificationSnoozeFill } from 'react-icons/ri';
-import { FaBoxArchive } from 'react-icons/fa6';
+import { FaBoxArchive, FaMessage, FaVideo } from 'react-icons/fa6';
+import { IoCallSharp } from 'react-icons/io5';
+import { LuPhoneCall } from 'react-icons/lu';
 
 
 const urlMaker = (fileName) => {
@@ -63,6 +65,24 @@ const FriendDetail = async ({ params }) => {
                         <button className='bg-[#F8FAFC] font-medium text-[14px] px-[17px] py-[8px] rounded-[4px]'>Edit</button>
                     </div>
                     <p className='px-6 text-[18px]'>Connect every <span className='font-bold'>30 days</span> </p>
+                </div>
+                <div className='bg-white shadow-md w-full h-[185px] mt-2 rounded-[8px] p-6 '>
+                    <p className='font-medium text-[20px] text-[#244D3F]'>Quick Check-In</p>
+                    <div className='grid grid-cols-3'>
+                        <div className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
+
+                            <button className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><LuPhoneCall />Call</button>
+                        </div>
+                        <div className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
+
+                            <button className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><FaMessage />Text</button>
+                        </div>
+                        <div className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
+
+                            <button className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><FaVideo />Video</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
