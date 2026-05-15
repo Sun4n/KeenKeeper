@@ -1,37 +1,40 @@
 "use client";
 import { timelineContext } from "@/Context/TimelineProvider";
-import { useContext } from "react";
-import callPng from '../../asset/call.png';
-import textPng from '../../asset/text.png'
-import videoPng from '../../asset/video.png'
-import Image from "next/image";
-
+import { useContext, useState } from "react";
+import TimelineCard from "@/component/TimelineCard/TimelineCard";
+import Call from "@/UI/test/Call";
+import Text from "@/UI/test/Text";
+import Video from "@/UI/test/Video";
 
 const Timeline = () => {
     const { logs } = useContext(timelineContext)
-    console.log(logs);
+    const [sort, setSort] = useState("All") // ✅ default All
+    
+    const findFilter = logs.filter(log => log.type.toLowerCase() === sort.toLowerCase())
+
     return (
-        <div className="container mx-auto ">
+        <div className="container mx-auto">
             <h1 className="font-bold text-[48px]">Timeline</h1>
-            <div className="flex gap-4 flex-col ">
-                {
-                    logs.map((log, indx) => {
-                        return (
-                            <div key={indx} style={{ padding: "16px", marginTop: "24px" }} className="card bg-base-100 w-full h-[238px] shadow-md rounded-[8px]  flex gap-2 items-center ">
-                                <figure className="p-4">
-                                    {log.type.toLowerCase() == 'call' ? <Image src={callPng} alt="callImage" width={40} height={40}></Image> : log.type.toLowerCase() == 'text' ? <Image src={textPng} width={40} height={40} alt="textImage"></Image> : <Image src={videoPng} width={40} height={40} alt="videoImage"></Image>}
-                                </figure>
-                                <div className="ml-2">
-                                    <div className="card-body flex gap-2 items-center p-40">
-                                        <span className="uppercase text-[20px] font-medium">{log.type}</span>
-                                        <h2 className="card-title">with {log.friend.name}</h2>
-                                    </div>
-                                    <p>{new Date().toDateString()}</p>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+
+         
+            <details className="dropdown mb-6">
+                <summary className="btn">
+                    {sort} ⬇️
+                </summary>
+                <ul className="menu dropdown-content bg-white rounded-box z-10 w-52 p-2 shadow-md">
+                    <li onClick={() => setSort("All")}><a>All</a></li>
+                    <li onClick={() => setSort("Call")}><a>Call</a></li>
+                    <li onClick={() => setSort("Text")}><a>Text</a></li>
+                    <li onClick={() => setSort("Video")}><a>Video</a></li>
+                </ul>
+            </details>
+
+           
+            <div>
+                {sort == 'All' && <TimelineCard logs={logs}></TimelineCard>}
+                {sort == 'Call' && <Call findFilter={findFilter}></Call>}
+                {sort == 'Text' && <Text findFilter={findFilter}></Text>}
+                {sort == 'Video' && <Video findFilter={findFilter}></Video>}
             </div>
         </div>
     );
