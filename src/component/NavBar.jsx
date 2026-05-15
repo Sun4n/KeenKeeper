@@ -13,7 +13,7 @@ const NavBar = () => {
         <Link href={'/'} className={`flex gap-2 items-center text-[1rem] font-semibold text-[#64748B] ${pathName === '/' && "bg-[#244D3F] text-white px-4 py-3 rounded-[4px]"}`}><FaHome />Home</Link>
         <Link href={'/timeline'} className={`flex gap-2 items-center text-[1rem] font-semibold text-[#64748B] ${pathName === '/timeline' && "bg-[#244D3F] text-white px-4 py-3 rounded-[4px]"}`}><IoIosTime />Timeline </Link>
         <Link href={'/status'} className={`flex gap-2 items-center text-[1rem] font-semibold text-[#64748B] ${pathName === '/status' && "bg-[#244D3F] text-white px-4 py-3 rounded-[4px]"}`}><ImStatsDots />Stats</Link>
-    
+
     </>
     return (
         <div className="  bg-base-100 shadow-sm">
@@ -21,10 +21,17 @@ const NavBar = () => {
                 <div className="">
                     <Image src={logo} alt='KeenKeeper'></Image>
                 </div>
-                <div className="">
-                    <ul className="menu menu-horizontal px-1 gap-2">
-                        {link}
-                    </ul>
+                <div className="navbar-end">
+                    <div className="hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1 gap-x-1">
+                            {link}
+                        </ul>
+                    </div>
+                    <div className="">
+                        <ul className="menu menu-horizontal px-1 gap-2">
+                            {link}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
