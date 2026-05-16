@@ -13,7 +13,7 @@ const FriendDetailDesign = ({friends,friendId}) => {
     const {handleCall,handleText,handleVideo,call} = useContext(timelineContext)
     console.log(handleCall,call);
     return (
-        <div className='max-w-[1100px] mx-auto flex gap-4 mt-20'>
+        <div className='max-w-[1100px] mx-auto flex gap-4 mt-20 lg:flex-row flex-col justify-center items-center'>
             <div className=''>
                 <div className='bg-white shadow-2xl w-[370px] h-[300px] p-[24px]  rounded-[8px]'>
                     <div className='space-y-2 text-center'>

@@ -17,7 +17,7 @@ const Friend = () => {
     return (
         <>
             <h1 className='text-[24px] text-[#1F2937] font-semibold mb-4'>Your Friends</h1>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 gap-4'>
                 {friends.map(friend => (
                     <Link key={friend.id} href={`/friend/${friend.id}`}>
                         <FriendCard friend={friend} />
