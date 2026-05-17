@@ -7,11 +7,11 @@ import { FaBoxArchive, FaMessage, FaVideo } from 'react-icons/fa6';
 import { IoCallSharp } from 'react-icons/io5';
 import { LuPhoneCall } from 'react-icons/lu';
 import { timelineContext } from '@/Context/TimelineProvider';
-const FriendDetailDesign = ({friends,friendId}) => {
+const FriendDetailDesign = ({ friends, friendId }) => {
     const findFriend = friends.find(friend => friend.id == friendId)
-   
-    const {handleCall,handleText,handleVideo,call} = useContext(timelineContext)
-    console.log(handleCall,call);
+
+    const { handleCall, handleText, handleVideo, call } = useContext(timelineContext)
+    console.log(handleCall, call);
     return (
         <div className='max-w-[1100px] mx-auto flex gap-4 mt-20 lg:flex-row flex-col justify-center items-center'>
             <div className=''>
@@ -35,46 +35,54 @@ const FriendDetailDesign = ({friends,friendId}) => {
                 </div>
             </div>
             <div>
-                <div className='flex gap-1'>
-                    <div className='bg-white shadow-md w-[235px] h-[134px] rounded-[8px] '>
-                        <p className='px-[110px] pt-[32px] pb-2 text-[2rem] font-semibold text-[#64748B]'>62</p>
-                        <p className='px-[32px]  text-[1rem] text-center text-[#64748B]'>Days Since Contact</p>
+                <div className='grid md:grid-cols-3 gap-1 flex flex-col'>
+                    <div className='bg-white shadow-md h-[134px] rounded-[8px] flex flex-col justify-center items-center '>
+                        <p className='text-[2rem] font-semibold text-[#64748B]'>62</p>
+                        <p className='text-[1rem] text-center text-[#64748B]'>Days Since Contact</p>
                     </div>
-                    <div className='bg-white shadow-md w-[235px] h-[134px] rounded-[8px] '>
+                    <div className='bg-white shadow-md h-[134px] rounded-[8px] flex flex-col justify-center items-center '>
                         <p className='px-[110px] pt-[32px] pb-2 text-[2rem] font-semibold text-[#64748B]'>30</p>
                         <p className='px-[32px]  text-[1rem] text-center text-[#64748B]'>Goal (Days)</p>
                     </div>
-                    <div className='bg-white shadow-md w-[420px] h-[134px] rounded-[8px] '>
-                        <p className='px-[110px] pt-[32px] pb-2 text-[2rem] font-semibold text-[#64748B]'>Feb 27, 2026</p>
+                    <div className='bg-white shadow-md w-full md:w-[230px]  h-[134px] rounded-[8px] flex flex-col justify-center items-center '>
+                        <p className='px-[16px] text-[2rem] font-semibold text-[#64748B]'>Feb 27, 2026</p>
                         <p className='px-[32px]  text-[1rem] text-center text-[#64748B]'>Next Due</p>
                     </div>
                 </div>
-                <div className='bg-white shadow-md w-full h-[134px] rounded-[8px] '>
-                    <div className='flex justify-between items-center p-6'>
-                        <p className='text-[#244D3F] font-medium text-[20px]'>Relationship Goal</p>
+                <div className='bg-white shadow-md w-full  lg:w-full rounded-[8px] mb-4'>
+                    <div className='flex justify-between items-center w-full p-6'>
+                        <p className='text-[#244D3F] font-medium  text-[20px]'>Relationship Goal</p>
                         <button className='bg-[#F8FAFC] font-medium text-[14px] px-[17px] py-[8px] rounded-[4px]'>Edit</button>
                     </div>
                     <p className='px-6 text-[18px]'>Connect every <span className='font-bold'>30 days</span> </p>
                 </div>
-                <div className='bg-white shadow-md w-full h-[185px] mt-2 rounded-[8px] p-6 '>
+                <div className='bg-white shadow-md p-6 rounded-[8px] w-full'>
                     <p className='font-medium text-[20px] text-[#244D3F]'>Quick Check-In</p>
-                    <div className='grid grid-cols-3'>
-                        <div className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
-
-                            <button onClick={()=>handleCall(findFriend)} className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><LuPhoneCall />Call</button>
+                    <div className='grid grid-cols-3 gap-2 mt-2'>
+                        <div className='bg-[#F8FAFC] shadow-sm rounded-[8px]'>
+                            <button onClick={() => handleCall(findFriend)} className='w-full h-[95px] flex justify-center items-center flex-col gap-1 text-[25px]'>
+                                <LuPhoneCall />
+                                <span className='text-[14px]'>Call</span>
+                            </button>
                         </div>
-                        <div className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
-
-                            <button onClick={()=>handleText(findFriend)} className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><FaMessage />Text</button>
+                        <div className='bg-[#F8FAFC] shadow-sm rounded-[8px]'>
+                            <button onClick={() => handleText(findFriend)} className='w-full h-[95px] flex justify-center items-center flex-col gap-1 text-[25px]'>
+                                <FaMessage />
+                                <span className='text-[14px]'>Text</span>
+                            </button>
                         </div>
-                        <div onClick={()=>handleVideo(findFriend)} className='bg-[#F8FAFC] shadow-sm w-[218px] h-[95px] rounded-[8px] mt-2'>
-                            <button className='flex justify-center items-center flex-col px-[95px] py-3 text-[25px]'><FaVideo />Video</button>
+                        <div className='bg-[#F8FAFC] shadow-sm rounded-[8px]'>
+                            <button onClick={() => handleVideo(findFriend)} className='w-full h-[95px] flex justify-center items-center flex-col gap-1 text-[25px]'>
+                                <FaVideo />
+                                <span className='text-[14px]'>Video</span>
+                            </button>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
+      
     );
 };
 
